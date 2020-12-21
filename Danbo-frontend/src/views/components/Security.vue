@@ -69,7 +69,7 @@
         <v-card-actions>
           <v-btn :disabled="step === 1" text @click="step--"> Back </v-btn>
           <v-spacer></v-spacer>
-          <v-btn color="primary" depressed @click="req_verify">
+          <v-btn color="primary" depressed @click="click_button">
             Continue
           </v-btn>
         </v-card-actions>
@@ -108,8 +108,20 @@ export default {
   created() {
   },
   methods: {
+    click_button: function(){
+      if(this.step == 1)
+        this.req_verify();
+      else if( this.step==2)
+        this.req_modify();
+      else
+        this.step = 1;
+    },
+
+
     //发送验证码
     req_verify: function () {
+      if(this.step != 1)
+        return;
       var formdata = new FormData();
       formdata.append("email", this.email);
       this.axios
@@ -132,13 +144,14 @@ export default {
     //修改密码
     req_modify: function () {
       var formdata = new FormData();
-      formdata.append("username", this.username);
+      // formdata.append("username", this.username);
       formdata.append("password", this.password);
       formdata.append("r_password", this.repassword);
       formdata.append("email", this.email);
       formdata.append("code", this.codes);
+      console.log(formdata,"modify")
       this.axios
-        .post("/user/modifyPwd", formdata, {
+        .post("/user/modifyPwdLogin", formdata, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((response) => this.ack_modify(response))
