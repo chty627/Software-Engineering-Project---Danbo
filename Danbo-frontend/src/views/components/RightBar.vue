@@ -3,7 +3,7 @@
     <v-list-item three-line>
       <v-list-item-content>
         <div class="overline mb-1">
-          <router-link to="/personal">{{username}}</router-link>
+          <router-link to="/personal">{{nickname}}</router-link>
         </div>
         <v-list-item-subtitle>{{signature}}</v-list-item-subtitle>
       </v-list-item-content>
@@ -33,6 +33,7 @@ export default {
   },
   data: () => ({
     username: global.information["username"],
+    nickname:global.information["nickname"],
     signature: global.information["signature"],
     profile:"http://127.0.0.1:8000/media/"+global.information["profile"],
   }),
@@ -49,6 +50,7 @@ export default {
     update: function(){
       this.username = global.information["username"];
       this.signature = global.information["signature"]+"";
+      this.nickname = global.information["nickname"];
       this.profile = "http://127.0.0.1:8000/media/"+global.information["profile"];
     },
     toNew: function(){

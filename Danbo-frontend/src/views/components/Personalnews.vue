@@ -15,7 +15,7 @@
         </v-card>
         <v-card elevation="0" class="mt-16 d-flex justify-end mb-6">
           <p class="font-weight-regular" color="grey lighten-2">
-            Personal signature:
+            Signature:
           </p>
         </v-card>
         <v-card elevation="0" class="mt-3 d-flex justify-end mb-6"> </v-card>

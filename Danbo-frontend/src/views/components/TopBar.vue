@@ -9,14 +9,6 @@
     fade-img-on-scroll
     scroll-target="#scrolling-techniques-3"
   >
-    <template v-slot:img="{ props }">
-      <v-img
-        v-bind="props"
-        gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
-      ></v-img>
-    </template>
-
-    <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
     <v-toolbar-title>
       <router-link to="/home">Danbo</router-link>
@@ -48,10 +40,6 @@ export default {
   data: () => ({
     now: "",
     keyword: "",
-    tabs: [
-      { id: 1, name: "My Zone", link: "home" },
-      { id: 2, name: "Hot", link: "topic" },
-    ],
   }),
   mounted: function() {
     console.log(this.$route.path);
